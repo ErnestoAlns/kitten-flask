@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Cats
+{% endblock %}
+
+{% block htitle%}
+    Kitten Flask CRUD
+{% endblock %}
+
+{% block content%}
+
+<form method='POST'>
+    <label>Name</label>
+    <input name='name' placeholder="Cat name" required/>
+    <label>Color</label>
+    <input name='color' placeholder="Cat color" required/>
+    <label>Color Eye</label>
+    <input name='color_eye' placeholder="Cat color eye" required/>
+
+    <input type="submit" value="Submit" />
+</form>
+
+<br/>
+<br/>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Color Eye</th>
+        <th>Color</th>
+    </tr>
+</table> 
+<h2>Detalles del Gato de Prueba</h2>
+    {% for data in datas %}
+        <div class="cat-details">
+            {{ data.id }}
+            {{ data.name }}
+            {{ data.color }}
+            {{ data.color_eye }}       
+        </div>
+    {% endfor %}
+<br/>
+
+{% endblock %}

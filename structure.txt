@@ -1,0 +1,27 @@
+kitten-flask/
+├── src/                      # 👈 CÓDIGO FUENTE (Lógica, Servicios, Repositorios)
+│   ├── app.py                # Inicialización y Contexto DB
+│   └── services/             # El cerebro
+│   └── ...
+├── templates/                # 👈 RECURSOS WEB (Archivos .html)
+│   ├── home.html
+│   └── insert.html
+├── static/                   # 👈 RECURSOS WEB (CSS, JS, Imágenes)
+│   ├── css/
+│   └── js/
+├── tests/                    # Pruebas
+└── .env      
+
+src/
+├── app.py             # Configuración de Flask y el Contexto DB
+├── .env               # Variables de entorno (user, password, host, db)
+├── database/
+│   └── connection.py  # La función get_db_connection()
+├── models/
+│   └── cat_models.py  # Pydantic/Dataclasses (Tipado)
+├── repositories/
+│   └── cat_repo.py    # SQL parametrizado
+├── services/
+│   └── cat_service.py # Lógica de Negocio y Transacción
+└── routes/
+    └── cat_routes.py  # Solo manejo HTTP (request, response)
