@@ -15,6 +15,3 @@ def close_db_connection(e=None):
     db = g.pop('db_connection', None)
     if db is not None:
         db.close()
-
-# Nota: El cursor ya no se necesita aquí. Se crea en el Repositorio, 
-# usando g.db_connection.cursor(dictionary=True)

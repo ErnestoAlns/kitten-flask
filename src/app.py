@@ -2,7 +2,6 @@ import os
 from flask import Flask, g
 from .routes.cat_routes import cats
 
-#project_root is the path of our project
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 
 
@@ -29,5 +28,5 @@ def create_app():
 
             pass
 
-    app.register_blueprint(cats) # Registro final
+    app.register_blueprint(cats) 
     return app

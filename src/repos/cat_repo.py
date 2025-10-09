@@ -8,7 +8,7 @@ class CatRepo:
         sql = 'SELECT * FROM cat'
         cursor.execute(sql)
         sql_data_rows = cursor.fetchall()
-        cursor.close() # Cierra el cursor
+        cursor.close() 
         return sql_data_rows
 
     def get_by_id(self, connection, cat_id: int):
@@ -23,7 +23,7 @@ class CatRepo:
         cursor.close()
         return CATS
 
-    def insert_cat(self, connection, data):
+    def insert(self, connection, data):
         cursor = connection.cursor(dictionary=True)
         sql = 'INSERT INTO cat (name, color, color_eye) values (%(name)s, %(color)s, %(color_eye)s)'
         try:
@@ -32,7 +32,7 @@ class CatRepo:
         finally:
             cursor.close()
 
-    def update_cat(self, connection, data):
+    def update(self, connection, data):
         sql = 'UPDATE cat SET name = %(name)s, color = %(color)s, color_eye = %(color_eye)s WHERE id = %(id)s'
         with connection.cursor(dictionary=True) as cursor:
             try: 
@@ -44,7 +44,7 @@ class CatRepo:
                 connection.rollback()
                 raise
 
-    def delete_cat(self, connection, id):
+    def delete(self, connection, id:int):
         cursor = connection.cursor(dictionary=True)
         sql = 'DELETE FROM cat WHERE id = %s'
         with connection.cursor() as cursor:

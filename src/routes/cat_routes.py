@@ -23,7 +23,7 @@ def data_cat():
 
     if request.method == 'POST':
         data_form = Cat.model_validate(request.form.to_dict())
-        cat_inserted = cat_repo.insert_cat(connection, data_form)
+        cat_inserted = cat_repo.insert(connection, data_form)
         return redirect(url_for('cats.data_cat'))
 
     return render_template('cats/data_cat.html', datas = datas)
@@ -35,7 +35,7 @@ def update_cat(id):
         data_form = Cat.model_validate(request.form.to_dict())
         id_to_add ={ 'id': id }
         data = data_form.model_dump() | id_to_add
-        cat_update = cat_repo.update_cat(connection, data)
+        cat_update = cat_repo.update(connection, data)
         return redirect(url_for('cats.data_cat'))
 
     return render_template('cats/update.html')
@@ -44,5 +44,5 @@ def update_cat(id):
 @cats.route('/delete_cat/<id>')
 def delete_cat(id):
     connection = g.db_connection
-    cat_repo.delete_cat(connection, id)
+    cat_repo.delete(connection, id)
     return redirect(url_for('cats.data_cat'))

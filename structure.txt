@@ -1,12 +1,12 @@
 kitten-flask/
-├── src/                      # 👈 CÓDIGO FUENTE (Lógica, Servicios, Repositorios)
+├── src/                      #  CÓDIGO FUENTE (Lógica, Servicios, Repositorios)
 │   ├── app.py                # Inicialización y Contexto DB
 │   └── services/             # El cerebro
 │   └── ...
-├── templates/                # 👈 RECURSOS WEB (Archivos .html)
+├── templates/                #  RECURSOS WEB (Archivos .html)
 │   ├── home.html
 │   └── insert.html
-├── static/                   # 👈 RECURSOS WEB (CSS, JS, Imágenes)
+├── static/                   #  RECURSOS WEB (CSS, JS, Imágenes)
 │   ├── css/
 │   └── js/
 ├── tests/                    # Pruebas
