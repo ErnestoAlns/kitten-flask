@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Update cat
+{% endblock %}
+
+{% block htitle%}
+    Update cat
+{% endblock %}
+
+{% block content%}
+
+<form method='POST'>
+    <label>Name</label>
+    <input name='name' placeholder="Cat name" required/>
+    <label>Color</label>
+    <input name='color' placeholder="Cat color" required/>
+    <label>Color Eye</label>
+    <input name='color_eye' placeholder="Cat color eye" required/>
+
+    <input type="submit" value="Update" />
+</form>
+{% endblock %}

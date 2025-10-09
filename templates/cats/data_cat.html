@@ -38,6 +38,8 @@
             {{ data.name }}
             {{ data.color }}
             {{ data.color_eye }}       
+            <a href="{{ url_for('cats.update_cat', id = data.id) }}">Update</a>
+            <a href="{{ url_for('cats.delete_cat', id = data.id) }}">Delete</a>
         </div>
     {% endfor %}
 <br/>

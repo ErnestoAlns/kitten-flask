@@ -1,4 +1,5 @@
 from ..models.cat_model import Cat
+from mysql.connector import Error
 
 class CatRepo:
 
@@ -24,10 +25,41 @@ class CatRepo:
 
     def insert_cat(self, connection, data):
         cursor = connection.cursor(dictionary=True)
-        sql = 'INSERT INTO cat (name, color, color_eye) values (%s, %s, %s)'
-        values = (data.name, data.color, data. color_eye)
-        cursor.execute(sql, values)
-        cursor.commit()
+        sql = 'INSERT INTO cat (name, color, color_eye) values (%(name)s, %(color)s, %(color_eye)s)'
+        try:
+            cursor.execute(sql, data.model_dump())
+            connection.commit()
+        finally:
+            cursor.close()
+
+    def update_cat(self, connection, data):
+        sql = 'UPDATE cat SET name = %(name)s, color = %(color)s, color_eye = %(color_eye)s WHERE id = %(id)s'
+        with connection.cursor(dictionary=True) as cursor:
+            try: 
+                cursor.execute(sql, data)
+                connection.commit()
+                return cursor.rowcount
+            except Error as e:
+                print(f"Error Updating cat: {e}")
+                connection.rollback()
+                raise
+
+    def delete_cat(self, connection, id):
+        cursor = connection.cursor(dictionary=True)
+        sql = 'DELETE FROM cat WHERE id = %s'
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute(sql, [int(id)]) 
+                connection.commit()
+                return cursor.rowcount 
+
+            except Error as e: 
+                print(f"Error al ejecutar DELETE: {e}")
+                connection.rollback()
+                raise
+
+
+
 
 
 
