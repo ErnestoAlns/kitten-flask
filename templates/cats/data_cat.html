@@ -5,43 +5,46 @@
 {% endblock %}
 
 {% block htitle%}
-    Kitten Flask CRUD
+    <header class="header">
+        Kitten Flask CRUD
+    </header>
 {% endblock %}
 
 {% block content%}
 
-<form method='POST'>
-    <label>Name</label>
-    <input name='name' placeholder="Cat name" required/>
-    <label>Color</label>
-    <input name='color' placeholder="Cat color" required/>
-    <label>Color Eye</label>
-    <input name='color_eye' placeholder="Cat color eye" required/>
 
-    <input type="submit" value="Submit" />
+<form class="login-form" method='POST'>
+    <div class="form-input-material">
+        <label>Name</label>
+        <input class="form-control-material" name='name' placeholder="Cat name" required/>
+        <label>Color</label>
+        <input class="form-control-material" name='color' placeholder="Cat color" required/>
+        <label>Color Eye</label>
+        <input class="form-control-material" name='color_eye' placeholder="Cat color eye" required/>
+        <input class="btn btn-primary" type="submit" value="Submit" />
+    </div>
 </form>
 
-<br/>
-<br/>
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Color Eye</th>
-        <th>Color</th>
-    </tr>
-</table> 
-<h2>Detalles del Gato de Prueba</h2>
+
+<main class="cat-grid">
     {% for data in datas %}
-        <div class="cat-details">
-            {{ data.id }}
-            {{ data.name }}
-            {{ data.color }}
-            {{ data.color_eye }}       
-            <a href="{{ url_for('cats.update_cat', id = data.id) }}">Update</a>
-            <a href="{{ url_for('cats.delete_cat', id = data.id) }}">Delete</a>
+        <div class="cat-card">
+            <div class="cat-avatar">
+                <i class="fas fa-cat"></i>
+            </div>
+            <div class="cat-info">
+                <h2>{{ data.name }}</h2>
+                <p>Color: {{ data.color }}</p>
+                <p>Eyes: {{ data.color_eye }}</p>
+            </div>
+            <div class="cat-actions">
+                <a class="icon-btn edit-btn" href="{{ url_for('cats.update_cat', id = data.id) }}"><i class="fas fa-pencil-alt"></i></a>
+                <a class="icon-btn delete-btn" href="{{ url_for('cats.delete_cat', id = data.id) }}"><i class="fas fa-trash-alt"></i></a>
+            </div>
         </div>
     {% endfor %}
-<br/>
+</main>
+
 
 {% endblock %}
