@@ -1,17 +1,24 @@
 {% extends 'index.html' %}
 
 {% block title %}
-    Home
+    Kitten 
 {% endblock %}
 
 {% block htitle%}
     <header class="header">
-        <h1>Web Mini Crud :)</h1>
+        <h1>Kitten Flask</h1>
     </header>
 {% endblock %}
 
 {% block content%}
-<p>This project is for test my skills to bulid a web app in flask adding a mysql database and connect all whith python, the database is about cats, and its atibutes like name, color eye, color fur. In this web app you can list the cats, insterta new cat, update a cat and delet a cat.</p>
-
+    <p>Kitten-Flask es un mini CRUD hecho en Flask con un enfoque en seguridad, clean architecture y buenas prácticas para evitar concurrencia, SQL Injection y acoplamiento fuerte.</p>
+    <h2>Descripcion</h2>
+    <p>Este proyecto ejemplifica la construcción de una API básica para administrar recursos de “gatos” (cats) con las siguientes características:</p>
+    <li> - Arquitectura en capas (presentación, servicio, repositorio, base de datos)</li>
+    <li> - Uso de Pydantic para validación tipada y modelos (entrada/salida)</li>
+    <li> - Manejo seguro de la conexión a base de datos por petición (thread-safe)</li>
+    <li> - SQL parametrizado para evitar inyecciones</li>
+    <li> - Manejo de errores / excepciones customizadas</li>
+    <li> - Separación de responsabilidades y bajo acoplamiento</li>
 
 {% endblock %}
